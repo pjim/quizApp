@@ -25,21 +25,17 @@ function displayQuestion(){
      //          increase score
      //     }
      // }
-     //
+     var formContainer = document.getElementById('formContainer');
      function removeLastQuestions(){
-         var allQuestions =  document.getElementById('questionForm');
-         console.log(allQuestions.children.length);
-         for(var removeIndex = 0; removeIndex < allQuestions.children.length; removeIndex++) {
-             allQuestions.removeChild(allQuestions.children[removeIndex]);
-           }
+        formContainer.firstChild.removeChild(); 
+        
      }
       
     removeLastQuestions();
          
     
     var displayForm = document.createElement("form");
-    var divForForm = document.getElementById("formContainer");
-    formContainer.appendChild(displayForm);
+        formContainer.appendChild(displayForm);
     var answerGroup;
  
     for( var i = 0; i < questions[questionNumber].answers.length; i++){
