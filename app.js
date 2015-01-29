@@ -19,13 +19,26 @@ var questions = [
     var questionNumber = 0;
     var userScore = 0;
 function displayQuestion(){
-     // function amendUserScore(){
-     //     if(userScore != 0){
-     //         check radio value number matches correctAnswer 
-     //          increase score
-     //     }
-     // }
+
+     function amendUserScore(){
+         
+             var answerNumber = questions[questionNumber -1].correctAnswer;
+             var correctValue = questions[questionNumber -1].answers[answerNumber];
+             var correctRadio;
+             var radioList = document.getElementsByName('input');
+             for(var i in radioList){
+                if(i.value == correctValue){
+                    correctRadio = i;
+                }
+             }
+             if(correctRadio.checked === true){
+                userScore ++;
+              } 
+     }
+    
+     
      var formContainer = document.getElementById('formContainer');
+ 
      function removeLastQuestions(){
         var oldAnswers = formContainer.firstChild; 
          console.log(oldAnswers); 
@@ -33,7 +46,10 @@ function displayQuestion(){
         
      }
     if(questionNumber !== 0){ 
+
+    amendUserScore();
     removeLastQuestions();}
+
          
     
     var displayForm = document.createElement("form");
