@@ -54,9 +54,9 @@ function displayQuestion(){
        
       answerGroup.appendChild(answerText);
         
-      var qForm =  document.getElementById("questionForm");
-      qForm.appendChild(answerGroup);
-      qForm.appendChild(radio);
+      
+      displayForm.appendChild(answerGroup);
+      displayForm.appendChild(radio);
     }
     
      questionNumber++;         
