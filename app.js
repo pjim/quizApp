@@ -27,11 +27,13 @@ function displayQuestion(){
      // }
      var formContainer = document.getElementById('formContainer');
      function removeLastQuestions(){
-        formContainer.firstChild.removeChild(); 
+        var oldAnswers = formContainer.firstChild; 
+         console.log(oldAnswers); 
+          formContainer.removeChild(oldAnswers);
         
      }
-      
-    removeLastQuestions();
+    if(questionNumber !== 0){ 
+    removeLastQuestions();}
          
     
     var displayForm = document.createElement("form");
