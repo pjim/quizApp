@@ -24,16 +24,11 @@ function displayQuestion(){
          
              var answerNumber = questions[questionNumber -1].correctAnswer;
              var correctValue = questions[questionNumber -1].answers[answerNumber];
-             var correctRadio;
-             var radioList = document.getElementsByName('input');
-             for(var i in radioList){
-                if(i.value == correctValue){
-                    correctRadio = i;
-                }
-             }
+             var correctRadio = document.getElementById(correctValue);
+             
              if(correctRadio.checked === true){
-                userScore ++;
-              } 
+              userScore++;
+             } 
      }
     
      
@@ -63,7 +58,7 @@ function displayQuestion(){
       
       radio.type ="radio";
       radio.name = "answers"; 
-      radio.value = questions[questionNumber].answers[i];
+      radio.id = questions[questionNumber].answers[i];
       var answerText =  document.createTextNode(questions[questionNumber].answers[i]);
        
       answerGroup.appendChild(answerText);
