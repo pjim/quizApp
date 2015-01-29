@@ -38,7 +38,8 @@ function displayQuestion(){
          
     
     var displayForm = document.createElement("form");
-    
+    var divForForm = document.getElementById("formContainer");
+    formContainer.appendChild(displayForm);
     var answerGroup;
  
     for( var i = 0; i < questions[questionNumber].answers.length; i++){
