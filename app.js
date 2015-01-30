@@ -14,12 +14,29 @@ var questions = [
 
 
 
-// display the questions with the respective answer buttons and switch to the next one
-// with the next button
+
+
     var questionNumber = 0;
     var userScore = 0;
+//saves the given answer to redisplay on the radio when user goes back
+    var answerSaved = [];
+
 function displayQuestion(){
 
+
+     //add checker that ensures at least one radio is checked
+     function ensureRadioIsChecked(){
+         var radios = getElementByTag('input');
+         var checkedNumber = 0;
+         for( buttons in radios){
+            if(button.type = radio){
+                if(button.checked === true){
+                    checkedNumber ++;
+                 }
+             }
+         }             
+     }
+ 
      function amendUserScore(){
          
              var answerNumber = questions[questionNumber -1].correctAnswer;
@@ -28,9 +45,9 @@ function displayQuestion(){
              
              if(correctRadio.checked === true){
               userScore++;
-            
+                         
              } 
-            console.log(userScore);
+
      }
     
      
