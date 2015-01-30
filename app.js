@@ -37,9 +37,9 @@ function displayQuestion(){
          }
          if(!isChecked){
           alert("you must select at least one answer");
-          questionNumber -= 1;
+         
 
-          displayQuestion();
+         return;
         }
      }
  
@@ -67,7 +67,7 @@ function displayQuestion(){
      }
 
     if(questionNumber !== 0){ 
-       console.log(document.getElementById('monkey').checked);
+
 
  ensureRadioIsChecked();
     amendUserScore();
@@ -80,36 +80,37 @@ function displayQuestion(){
         formContainer.appendChild(displayForm);
     var answerGroup;
     console.log(questions[questionNumber]);
-    
-    if(typeof questions[questionNumber] === 'undefined'){
-        var scoreDisplay = document.createElement('h2');
-        var scoreText = 'Your score is ' + userScore;
-        var scoreNode = document.createTextNode(scoreText);          
+   if(ischecked){ 
+       if(typeof questions[questionNumber] === 'undefined'){
+           var scoreDisplay = document.createElement('h2');
+           var scoreText = 'Your score is ' + userScore;
+           var scoreNode = document.createTextNode(scoreText);          
 
 
-        scoreDisplay.appendChild(scoreNode);
-        formContainer.appendChild(scoreDisplay);
-        var questionButton = document.getElementById('nextQuestion')
-        questionButton.parentNode.removeChild(questionButton);
-    }else{ 
-     
-           for( var i = 0; i < questions[questionNumber].answers.length; i++){
-          answerGroup = document.createElement("p");
-          
-          var radio = document.createElement("input");
-          
-          radio.type ="radio";
-          radio.name = "answers"; 
-          radio.id = questions[questionNumber].answers[i];
-          var answerText =  document.createTextNode(questions[questionNumber].answers[i]);
-           
-          answerGroup.appendChild(answerText);
-            
-          
-          displayForm.appendChild(answerGroup);
-          displayForm.appendChild(radio);
-          }
+           scoreDisplay.appendChild(scoreNode);
+           formContainer.appendChild(scoreDisplay);
+           var questionButton = document.getElementById('nextQuestion')
+           questionButton.parentNode.removeChild(questionButton);
+       }else{ 
+        
+              for( var i = 0; i < questions[questionNumber].answers.length; i++){
+             answerGroup = document.createElement("p");
+             
+             var radio = document.createElement("input");
+             
+             radio.type ="radio";
+             radio.name = "answers"; 
+             radio.id = questions[questionNumber].answers[i];
+             var answerText =  document.createTextNode(questions[questionNumber].answers[i]);
+              
+             answerGroup.appendChild(answerText);
+               
+             
+             displayForm.appendChild(answerGroup);
+             displayForm.appendChild(radio);
+             }
     }
+  }
     
      questionNumber++;         
 }
