@@ -32,7 +32,7 @@ function displayQuestion(){
             if(radios[i].type === 'radio' && radios[i].checked){
 
                     isChecked = true;
-                 
+                    answerSaved[questionNumber] = radios[i].id;                
              
             }             
          }
