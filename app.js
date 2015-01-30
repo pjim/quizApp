@@ -35,6 +35,10 @@ function displayQuestion(){
                  }
              }
          }             
+         if(checkedNumber === 0){
+          alert("you must select at least one answer")
+          questionNumber -= 1;
+          displayQuestion();
      }
  
      function amendUserScore(){
@@ -62,7 +66,8 @@ function displayQuestion(){
     if(questionNumber !== 0){ 
 
     amendUserScore();
-    removeLastQuestions();}
+    removeLastQuestions();
+    ensureRadioIsChecked();}
 
          
     
