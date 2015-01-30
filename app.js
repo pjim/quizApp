@@ -5,11 +5,11 @@
 var questions = [
     {question: 'name the hair dog',
      answers:['monkey','dogdog','carrot','wolf'],
-     correctAnswer: 3},
+     correctAnswer: 'wolf'},
      {question: 'how much cheese is in my house',
       answers: ['lots','not much','too much'],
 
-      correctAnswer: 1}
+      correctAnswer: 'lots'}
       ];
 
 
@@ -20,6 +20,11 @@ var questions = [
     var userScore = 0;
 //saves the given answer to redisplay on the radio when user goes back
     var answerSaved = [];
+
+function backButton(){
+    //go back show the right checked button and amend the score
+
+}
 
 function displayQuestion(){
 
@@ -44,8 +49,8 @@ function displayQuestion(){
  
      function amendUserScore(){
          
-             var answerNumber = questions[questionNumber -1].correctAnswer;
-             var correctValue = questions[questionNumber -1].answers[answerNumber];
+             var correctValue = questions[questionNumber -1].correctAnswer;
+
              var correctRadio = document.getElementById(correctValue);
              
              if(correctRadio.checked === true){
