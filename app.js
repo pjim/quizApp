@@ -23,22 +23,24 @@ var questions = [
 
 function displayQuestion(){
 
-
      //add checker that ensures at least one radio is checked
      function ensureRadioIsChecked(){
-         var radios = getElementByTag('input');
-         var checkedNumber = 0;
-         for( buttons in radios){
-            if(button.type = radio){
-                if(button.checked === true){
-                    checkedNumber ++;
-                 }
-             }
-         }             
-         if(checkedNumber === 0){
-          alert("you must select at least one answer")
+         var radios = document.getElementsByName('answers');
+         var isChecked = false;
+         for(var i = 0; i < radios.length; i++ ){
+            if(radios[i].type === 'radio' && radios[i].checked){
+
+                    isChecked = true;
+                 
+             
+            }             
+         }
+         if(!isChecked){
+          alert("you must select at least one answer");
           questionNumber -= 1;
+
           displayQuestion();
+        }
      }
  
      function amendUserScore(){
@@ -63,11 +65,14 @@ function displayQuestion(){
           formContainer.removeChild(oldAnswers);
         
      }
-    if(questionNumber !== 0){ 
 
+    if(questionNumber !== 0){ 
+       console.log(document.getElementById('monkey').checked);
+
+ ensureRadioIsChecked();
     amendUserScore();
     removeLastQuestions();
-    ensureRadioIsChecked();}
+   }
 
          
     
