@@ -121,7 +121,7 @@ function displayQuestion(){
              if(typeof answerSaved[questionNumber] !== 'undefined'){
                var selected = document.getElementById(answerSaved[questionNumber]);
                selected.checked = true;
-               }
+                }
              }
              questionNumber++;         
 
