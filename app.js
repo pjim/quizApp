@@ -53,7 +53,7 @@ function displayQuestion(){
         formContainer.appendChild(displayForm);
     var answerGroup;
     
-    if(questions[questionNumber] === 'undefined'){
+    if(questions[questionNumber] == 'undefined'){
         var scoreDisplay = document.createElement('h2');
         var scoreText = 'Your score is ' + userScore;
         var scoreNode = document.createTextNode(scoreText);          
