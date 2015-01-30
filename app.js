@@ -24,9 +24,10 @@ var questions = [
 function displayQuestion(){
 
      //add checker that ensures at least one radio is checked
+     var isChecked = true;
      function ensureRadioIsChecked(){
          var radios = document.getElementsByName('answers');
-         var isChecked = false;
+         isChecked = false;
          for(var i = 0; i < radios.length; i++ ){
             if(radios[i].type === 'radio' && radios[i].checked){
 
@@ -36,9 +37,7 @@ function displayQuestion(){
             }             
          }
          if(!isChecked){
-          alert("you must select at least one answer");
-         
-
+          alert("you must select at least one answer"); 
          return;
         }
      }
@@ -70,17 +69,17 @@ function displayQuestion(){
 
 
  ensureRadioIsChecked();
-    amendUserScore();
-    removeLastQuestions();
-   }
+      if(isChecked){
+         amendUserScore();
+         removeLastQuestions();
+        
+         }
+    }
 
          
     
-    var displayForm = document.createElement("form");
-        formContainer.appendChild(displayForm);
-    var answerGroup;
     console.log(questions[questionNumber]);
-   if(ischecked){ 
+   if(isChecked){ 
        if(typeof questions[questionNumber] === 'undefined'){
            var scoreDisplay = document.createElement('h2');
            var scoreText = 'Your score is ' + userScore;
@@ -89,10 +88,14 @@ function displayQuestion(){
 
            scoreDisplay.appendChild(scoreNode);
            formContainer.appendChild(scoreDisplay);
-           var questionButton = document.getElementById('nextQuestion')
+           var questionButton = document.getElementById('nextQuestion');
            questionButton.parentNode.removeChild(questionButton);
        }else{ 
-        
+             
+              var displayForm = document.createElement("form");
+                  formContainer.appendChild(displayForm);
+              var answerGroup;     
+
               for( var i = 0; i < questions[questionNumber].answers.length; i++){
              answerGroup = document.createElement("p");
              
@@ -109,8 +112,9 @@ function displayQuestion(){
              displayForm.appendChild(answerGroup);
              displayForm.appendChild(radio);
              }
+             questionNumber++;         
+
     }
   }
     
-     questionNumber++;         
 }
