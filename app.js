@@ -52,8 +52,9 @@ function displayQuestion(){
     var displayForm = document.createElement("form");
         formContainer.appendChild(displayForm);
     var answerGroup;
+    console.log(questions[questionNumber]);
     
-    if(questions[questionNumber] == 'undefined'){
+    if(typeof questions[questionNumber] === 'undefined'){
         var scoreDisplay = document.createElement('h2');
         var scoreText = 'Your score is ' + userScore;
         var scoreNode = document.createTextNode(scoreText);          
@@ -61,6 +62,8 @@ function displayQuestion(){
 
         scoreDisplay.appendChild(scoreNode);
         formContainer.appendChild(scoreDisplay);
+        var questionButton = document.getElementById('nextQuestion')
+        questionButton.parentNode.removeChild(questionButton);
     }else{ 
      
            for( var i = 0; i < questions[questionNumber].answers.length; i++){
