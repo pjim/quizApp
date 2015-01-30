@@ -1,4 +1,4 @@
-// quiz app
+// quiz appj
 
 // an object with the questions built in
 
@@ -23,7 +23,8 @@ var questions = [
 
 function backButton(){
     //go back show the right checked button and amend the score
-
+    questionNumber -- ;
+    displayQuestion();
 }
 
 function displayQuestion(){
@@ -37,8 +38,8 @@ function displayQuestion(){
             if(radios[i].type === 'radio' && radios[i].checked){
 
                     isChecked = true;
-                    answerSaved[questionNumber] = radios[i].id;                
-             
+                    answerSaved[questionNumber -1] = radios[i].id;                
+                    console.log(answerSaved); 
             }             
          }
          if(!isChecked){
@@ -46,10 +47,10 @@ function displayQuestion(){
          return;
         }
      }
- 
+     //change to do the final score from the array  
      function amendUserScore(){
-         
-             var correctValue = questions[questionNumber -1].correctAnswer;
+       
+            var correctValue = questions[questionNumber -1].correctAnswer;
 
              var correctRadio = document.getElementById(correctValue);
              
@@ -116,6 +117,11 @@ function displayQuestion(){
              
              displayForm.appendChild(answerGroup);
              displayForm.appendChild(radio);
+             //add section for checking saved answer and checking appropriate button
+             if(typeof answerSaved[questionNumber] !== 'undefined'){
+               var selected = document.getElementById(answerSaved[questionNumber]);
+               selected.checked = true;
+               }
              }
              questionNumber++;         
 
