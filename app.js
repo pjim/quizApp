@@ -20,6 +20,8 @@ var questions = [
     var userScore = 0;
 //saves the given answer to redisplay on the radio when user goes back
     var answerSaved = [];
+    var formContainer = document.getElementById('formContainer');
+
 
 function backButton(){
     //go back show the right checked button and amend the score
@@ -29,15 +31,34 @@ function backButton(){
 }
 
 function nextButton(){
+
+     var isChecked = true;
 //here for refactoring of the next button
 //first checks the radio is checked
 //then saves the answer
 //then deletes the previous questions adds the next and increments the question
-}
-function displayQuestion(){
 
-     //add checker that ensures at least one radio is checked
-     var isChecked = true;
+       if(typeof questions[questionNumber] === 'undefined'){
+           //send to calculate score and print score
+           // else run display questions
+           calculateFinalScore();
+          displayFinalScore();
+
+       }
+}
+ function calculateFinalScore(){
+       
+            var correctValue = questions[questionNumber -1].correctAnswer;
+
+             var correctRadio = document.getElementById(correctValue);
+             
+             if(correctRadio.checked === true){
+              userScore++;
+                         
+             } 
+
+     }
+
      function ensureRadioIsChecked(){
          var radios = document.getElementsByName('answers');
          isChecked = false;
@@ -54,47 +75,17 @@ function displayQuestion(){
          return;
         }
      }
-     //change to do the final score from the array  
-     function amendUserScore(){
-       
-            var correctValue = questions[questionNumber -1].correctAnswer;
 
-             var correctRadio = document.getElementById(correctValue);
-             
-             if(correctRadio.checked === true){
-              userScore++;
-                         
-             } 
-
-     }
-    
-     
-     var formContainer = document.getElementById('formContainer');
- 
      function removeLastQuestions(){
         var oldAnswers = formContainer.firstChild; 
          console.log(oldAnswers); 
           formContainer.removeChild(oldAnswers);
         
      }
-
-    if(questionNumber !== 0){ 
-
-
- ensureRadioIsChecked();
-      if(isChecked){
-         amendUserScore();
-         removeLastQuestions();
+     
+    function  displayFinalScore(){
         
-         }
-    }
-
-         
-    
-    console.log(questions[questionNumber]);
-   if(isChecked){ 
-       if(typeof questions[questionNumber] === 'undefined'){
-           var scoreDisplay = document.createElement('h2');
+      var scoreDisplay = document.createElement('h2');
            var scoreText = 'Your score is ' + userScore;
            var scoreNode = document.createTextNode(scoreText);          
 
@@ -103,7 +94,12 @@ function displayQuestion(){
            formContainer.appendChild(scoreDisplay);
            var questionButton = document.getElementById('nextQuestion');
            questionButton.parentNode.removeChild(questionButton);
-       }else{ 
+
+    }
+
+function displayQuestion(){
+   
+
              
               var displayForm = document.createElement("form");
                   formContainer.appendChild(displayForm);
@@ -131,8 +127,4 @@ function displayQuestion(){
                 }
              }
              questionNumber++;         
-
-    }
-  }
-    
 }
