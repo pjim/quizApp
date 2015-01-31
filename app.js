@@ -37,13 +37,16 @@ function nextButton(){
 //first checks the radio is checked
 //then saves the answer
 //then deletes the previous questions adds the next and increments the question
-
+    ensureRadioIsChecked();
+    removeLastQuestions();
        if(typeof questions[questionNumber] === 'undefined'){
            //send to calculate score and print score
            // else run display questions
            calculateFinalScore();
           displayFinalScore();
 
+       }else{
+            displayQuestion();
        }
 }
  function calculateFinalScore(){
