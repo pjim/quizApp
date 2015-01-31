@@ -1,4 +1,4 @@
-// quiz appj
+
 
 // an object with the questions built in
 
@@ -15,10 +15,8 @@ var questions = [
 
 
 
-
     var questionNumber = 0;
     var userScore = 0;
-//saves the given answer to redisplay on the radio when user goes back
     var answerSaved = [];
     var formContainer = document.getElementById('formContainer');
 
@@ -38,46 +36,53 @@ function nextButton(){
 //then saves the answer
 //then deletes the previous questions adds the next and increments the question
     ensureRadioIsChecked();
-    removeLastQuestions();
-       if(typeof questions[questionNumber] === 'undefined'){
-           //send to calculate score and print score
-           // else run display questions
-           calculateFinalScore();
-          displayFinalScore();
+    if(isChecked){
+        removeLastQuestions();
+           if(typeof questions[questionNumber] === 'undefined'){
+               //send to calculate score and print score
+               // else run display questions
+               calculateFinalScore();
+              displayFinalScore();
 
-       }else{
-            displayQuestion();
-       }
+           }else{
+                displayQuestion();
+           }
+    }
 }
- function calculateFinalScore(){
-       
-            var correctValue = questions[questionNumber -1].correctAnswer;
+function calculateFinalScore(){
+              
+            for(var i = 0; i < answerSaved.length; i++){
+                 if(answerSaved[i] === questions[i].correctAnswer){
+                     userScore++
+                 }
+                  
+           
 
-             var correctRadio = document.getElementById(correctValue);
-             
-             if(correctRadio.checked === true){
-              userScore++;
-                         
-             } 
+           
+           
+           
+           
+           
+           
 
      }
 
-     function ensureRadioIsChecked(){
-         var radios = document.getElementsByName('answers');
-         isChecked = false;
-         for(var i = 0; i < radios.length; i++ ){
-            if(radios[i].type === 'radio' && radios[i].checked){
+function ensureRadioIsChecked(){
+    var radios = document.getElementsByName('answers');
+    isChecked = false;
+    for(var i = 0; i < radios.length; i++ ){
+       if(radios[i].type === 'radio' && radios[i].checked){
 
-                    isChecked = true;
-                    answerSaved[questionNumber -1] = radios[i].id;                
-                    console.log(answerSaved); 
-            }             
-         }
-         if(!isChecked){
-          alert("you must select at least one answer"); 
-         return;
-        }
-     }
+            isChecked = true;
+            answerSaved[questionNumber -1] = radios[i].id;                
+            console.log(answerSaved); 
+       }             
+    }
+    if(!isChecked){
+     alert("you must select at least one answer"); 
+    return;
+   }
+}
 
      function removeLastQuestions(){
         var oldAnswers = formContainer.firstChild; 
@@ -100,34 +105,32 @@ function nextButton(){
 
     }
 
-function displayQuestion(){
-   
+function displayQuestion(){   
+        
+         var displayForm = document.createElement("form");
+         formContainer.appendChild(displayForm);
+         var answerGroup;     
 
-             
-              var displayForm = document.createElement("form");
-                  formContainer.appendChild(displayForm);
-              var answerGroup;     
-
-              for( var i = 0; i < questions[questionNumber].answers.length; i++){
-             answerGroup = document.createElement("p");
-             
-             var radio = document.createElement("input");
-             
-             radio.type ="radio";
-             radio.name = "answers"; 
-             radio.id = questions[questionNumber].answers[i];
-             var answerText =  document.createTextNode(questions[questionNumber].answers[i]);
-              
-             answerGroup.appendChild(answerText);
-               
-             
-             displayForm.appendChild(answerGroup);
-             displayForm.appendChild(radio);
-             //add section for checking saved answer and checking appropriate button
-             if(typeof answerSaved[questionNumber] !== 'undefined'){
-               var selected = document.getElementById(answerSaved[questionNumber]);
-               selected.checked = true;
-                }
-             }
-             questionNumber++;         
+        for( var i = 0; i < questions[questionNumber].answers.length; i++){
+        answerGroup = document.createElement("p");
+        
+        var radio = document.createElement("input");
+        
+        radio.type ="radio";
+        radio.name = "answers"; 
+        radio.id = questions[questionNumber].answers[i];
+        var answerText =  document.createTextNode(questions[questionNumber].answers[i]);
+         
+        answerGroup.appendChild(answerText);
+          
+        
+        displayForm.appendChild(answerGroup);
+        displayForm.appendChild(radio);
+        //add section for checking saved answer and checking appropriate button
+        if(typeof answerSaved[questionNumber] !== 'undefined'){
+          var selected = document.getElementById(answerSaved[questionNumber]);
+          selected.checked = true;
+           }
+        }
+        questionNumber++;         
 }
