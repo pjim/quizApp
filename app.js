@@ -23,10 +23,17 @@ var questions = [
 
 function backButton(){
     //go back show the right checked button and amend the score
+    //doesn't check the radio is right just deletes shows then decrements
     questionNumber -- ;
     displayQuestion();
 }
 
+function nextButton(){
+//here for refactoring of the next button
+//first checks the radio is checked
+//then saves the answer
+//then deletes the previous questions adds the next and increments the question
+}
 function displayQuestion(){
 
      //add checker that ensures at least one radio is checked
