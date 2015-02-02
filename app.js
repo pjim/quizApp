@@ -24,7 +24,8 @@ var questions = [
 function backButton(){
     //go back show the right checked button and amend the score
     //doesn't check the radio is right just deletes shows then decrements
-    questionNumber -- ;
+    questionNumber -= 2;
+    removeLastQuestions();
     displayQuestion();
 }
 
@@ -56,7 +57,7 @@ function calculateFinalScore(){
                      userScore++
                  }
                   
-           
+            } 
 
            
            
@@ -127,10 +128,11 @@ function displayQuestion(){
         displayForm.appendChild(answerGroup);
         displayForm.appendChild(radio);
         //add section for checking saved answer and checking appropriate button
+
+        }
         if(typeof answerSaved[questionNumber] !== 'undefined'){
           var selected = document.getElementById(answerSaved[questionNumber]);
           selected.checked = true;
            }
-        }
         questionNumber++;         
 }
