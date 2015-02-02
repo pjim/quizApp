@@ -29,9 +29,10 @@ function backButton(){
     displayQuestion();
 }
 
+var isChecked = false;
 function nextButton(){
 
-     var isChecked = true;
+     
 //here for refactoring of the next button
 //first checks the radio is checked
 //then saves the answer
@@ -70,7 +71,7 @@ function calculateFinalScore(){
 
 function ensureRadioIsChecked(){
     var radios = document.getElementsByName('answers');
-    isChecked = false;
+
     for(var i = 0; i < radios.length; i++ ){
        if(radios[i].type === 'radio' && radios[i].checked){
 
@@ -81,7 +82,7 @@ function ensureRadioIsChecked(){
     }
     if(!isChecked){
      alert("you must select at least one answer"); 
-    return;
+    return; 
    }
 }
 
