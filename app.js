@@ -19,6 +19,50 @@ var questions = [
     var userScore = 0;
     var answerSaved = [];
     var formContainer = document.getElementById('formContainer');
+    if(window.location !==  "file:///home/pjim/programming/quizApp/quizApp.html"){  
+        var userName = '';
+    }
+
+
+function nameFormButton(){ 
+     userName = document.getElementById('name').value;       
+     localStorage.setItem("UsName",userName);
+//       return userName;
+       location = "file:///home/pjim/programming/quizApp/quizApp.html";
+
+       } 
+
+$('#name').keydown(function(e){
+   if(e.which == 13){
+
+       e.preventDefault();
+       nameFormButton();
+    }
+});
+
+var storedName = localStorage.getItem('UsName');
+var $storedNamePrint = $("<h2> " + storedName + "</h2>");
+console.log($storedNamePrint);
+var nameText = document.createElement('h2');
+var userNameText = document.createTextNode(storedName);
+nameText.appendChild(userNameText);
+
+
+if(window.location == "file:///home/pjim/programming/quizApp/quizApp.html" && questionNumber == 0){
+
+        $("body").append($storedNamePrint);
+
+   //document.body.appendChild(nameText);
+}
+
+$('#nextQuestion').click(function(){
+    if($("h2").length){
+        $("h2").remove();
+    }
+});
+
+console.log(localStorage.getItem('UsName'));
+
 
 
 function backButton(){
@@ -95,7 +139,7 @@ function ensureRadioIsChecked(){
      
     function  displayFinalScore(){
         
-      var scoreDisplay = document.createElement('h2');
+      var scoreDisplay = document.createElement('h3');
            var scoreText = 'Your score is ' + userScore;
            var scoreNode = document.createTextNode(scoreText);          
 
@@ -104,7 +148,8 @@ function ensureRadioIsChecked(){
            formContainer.appendChild(scoreDisplay);
            var questionButton = document.getElementById('nextQuestion');
            questionButton.parentNode.removeChild(questionButton);
-
+           
+           $('#backButton').remove();
     }
 
 function displayQuestion(){   

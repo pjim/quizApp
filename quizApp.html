@@ -4,12 +4,15 @@
 	<meta charset="UTF-8">
 	<title></title>
         <link rel="stylesheet" href="main.css">
+      
 </head>
 <body onload="displayQuestion()">
 	<input id="nextQuestion" type="button" name="nextQuestion" onclick="nextButton()" value="Next Question">
-<input type="button" value="Go back" onclick="backButton()">
+<input type="button" value="Go back" id="backButton"  onclick="backButton()">
 
 <div id="formContainer"></div>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+
         <script src="app.js"></script>
 
 </body>
