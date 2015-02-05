@@ -24,8 +24,23 @@ var questions = [
     }
 
 
+
+if($.cookie('name') !== undefined && window.location == "file:///home/pjim/programming/quizApp/quizIntro.html"){
+   var welcomeBack = $("<h1> Welcome back to the quiz " + $.cookie('name') +
+   " press the button to begin </h1>");
+   $('#name').hide();
+    userName = $.cookie('name');
+   $('body').prepend(welcomeBack);
+}else if(location == "file:///home/pjim/programming/quizApp/quizIntro.html"){
+   $introMessage = $('<h1> Welcome to the quiz please enter your name in the box provided and click the button to continue </h1>')
+   $('body').append($introMessage);
+}
+
 function nameFormButton(){ 
+    if($.cookie('name') === undefined){
      userName = document.getElementById('name').value;       
+     $.cookie('name',userName);
+    }
      localStorage.setItem("UsName",userName);
 //       return userName;
        location = "file:///home/pjim/programming/quizApp/quizApp.html";
@@ -41,16 +56,17 @@ $('#name').keydown(function(e){
 });
 
 var storedName = localStorage.getItem('UsName');
-var $storedNamePrint = $("<h2> " + storedName + "</h2>");
+var $storedNamePrint = $("<h2> here are your questions " + storedName + " good luck! </h2>");
 console.log($storedNamePrint);
+console.log($.cookie('name'));
 var nameText = document.createElement('h2');
 var userNameText = document.createTextNode(storedName);
 nameText.appendChild(userNameText);
 
 
-if(window.location == "file:///home/pjim/programming/quizApp/quizApp.html" && questionNumber == 0){
+if(window.location == "file:///home/pjim/programming/quizApp/quizApp.html" && questionNumber === 0){
 
-        $("body").append($storedNamePrint);
+        $("body").prepend($storedNamePrint);
 
    //document.body.appendChild(nameText);
 }

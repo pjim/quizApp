@@ -5,13 +5,17 @@
 	<title></title>
         <link rel="stylesheet" href="main.css">
       
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 <body onload="displayQuestion()">
-	<input id="nextQuestion" type="button" name="nextQuestion" onclick="nextButton()" value="Next Question">
-<input type="button" value="Go back" id="backButton"  onclick="backButton()">
-
-<div id="formContainer"></div>
+	<div class="container">
+		<input id="nextQuestion" type="button" name="nextQuestion" onclick="nextButton()" value="Next Question">
+		<input type="button" value="Go back" id="backButton"  onclick="backButton()">
+		
+	<div id="formContainer"></div>
+	</div>
 <script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="jquery.cookie.js"></script>
 
         <script src="app.js"></script>
 
