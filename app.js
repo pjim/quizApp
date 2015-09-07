@@ -30,6 +30,7 @@ if($.cookie('name') !== undefined && window.location == "file:///home/pjim/progr
    " press the button to begin </h1>");
    $('#name').hide();
     userName = $.cookie('name');
+   welcomeBack.addClass('text-center');
    $('body').prepend(welcomeBack);
 }else if(location == "file:///home/pjim/programming/quizApp/quizIntro.html"){
    $introMessage = $('<h1> Welcome to the quiz please enter your name in the box provided and click the button to continue </h1>')
@@ -57,6 +58,7 @@ $('#name').keydown(function(e){
 
 var storedName = localStorage.getItem('UsName');
 var $storedNamePrint = $("<h2> here are your questions " + storedName + " good luck! </h2>");
+$storedNamePrint.addClass('text-center');
 console.log($storedNamePrint);
 console.log($.cookie('name'));
 var nameText = document.createElement('h2');
